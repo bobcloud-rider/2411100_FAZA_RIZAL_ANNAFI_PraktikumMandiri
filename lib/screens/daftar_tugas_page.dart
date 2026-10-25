@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
+import "../models/tugas.dart";
 import "../viewmodels/tugas_view_model.dart";
 import "detail_tugas_page.dart";
 import "form_tugas_page.dart";
@@ -43,8 +44,13 @@ class DaftarTugasPage extends StatelessWidget {
               final tugas = vm.tugas[index];
               return Card(
                 child: ListTile(
+                  leading: Icon(
+                    _iconStatus(tugas.status),
+                    color: _warnaStatus(tugas.status),
+                  ),
                   title: Text(tugas.judul),
-                  subtitle: Text("${tugas.mataKuliah} • ${tugas.status.name}"),
+                  subtitle: Text(
+                      "${tugas.mataKuliah} • ${tugas.prioritas.name} • ${tugas.status.name}"),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.push(
                     context,
@@ -65,4 +71,16 @@ class DaftarTugasPage extends StatelessWidget {
           label: const Text("Tambah"),
         ),
       );
+
+  IconData _iconStatus(StatusTugas s) {
+    if (s == StatusTugas.belum) return Icons.radio_button_unchecked_rounded;
+    if (s == StatusTugas.proses) return Icons.hourglass_top_rounded;
+    return Icons.check_circle_outline_rounded;
+  }
+
+  Color _warnaStatus(StatusTugas s) {
+    if (s == StatusTugas.belum) return Colors.grey;
+    if (s == StatusTugas.proses) return Colors.orange;
+    return Colors.green;
+  }
 }
