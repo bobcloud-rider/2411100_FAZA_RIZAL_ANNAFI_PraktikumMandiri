@@ -26,10 +26,25 @@ status tugas mahasiswa **tanpa internet**.
 | prioritas   | TEXT                | rendah / menengah / tinggi     |
 | status      | TEXT                | belum / proses / selesai       |
 
+## Struktur Project
+
+```
+lib/
+  main.dart
+  models/tugas.dart
+  data/database_helper.dart
+  data/tugas_repository.dart
+  viewmodels/tugas_view_model.dart
+  screens/daftar_tugas_page.dart
+  screens/detail_tugas_page.dart
+  screens/form_tugas_page.dart
+test/tugas_model_test.dart
+```
+
 ## Arsitektur
 
 ```
-UI (screens) → ViewModel (ChangeNotifier) → Repository → DatabaseHelper → SQLite
+UI (screens) -> ViewModel (ChangeNotifier) -> Repository -> DatabaseHelper -> SQLite
 ```
 
 Pemisahan ini memastikan UI tidak mengakses database secara langsung.
