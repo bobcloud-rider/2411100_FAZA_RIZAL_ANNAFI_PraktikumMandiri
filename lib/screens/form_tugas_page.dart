@@ -107,6 +107,7 @@ class _FormTugasPageState extends State<FormTugasPage> {
                     controller: _deadline,
                     decoration: const InputDecoration(
                       labelText: "Tanggal deadline (YYYY-MM-DD)",
+                      helperText: "Format: YYYY-MM-DD, contoh: 2026-11-01",
                     ),
                     validator: (teks) {
                       if (teks == null || teks.trim().isEmpty) return "Wajib diisi";
